@@ -19,18 +19,21 @@ type
 
   TAppConfig = class(TXmlConfig)
   private
-    FUserConfig: TLoginConfig;
+    FLoginConfig: TLoginConfig;
   protected
-    procedure Initialized; override;
+    procedure Initialize; override;
   public
-    property UserConfig: TLoginConfig read FUserConfig write FUserConfig;
+    property LoginConfig: TLoginConfig read FLoginConfig write FLoginConfig;
   end;
+
+var
+  AppConfig: TAppConfig;
 
 implementation
 
 { TAppConfig }
 
-procedure TAppConfig.Initialized;
+procedure TAppConfig.Initialize;
 begin
   inherited;
 

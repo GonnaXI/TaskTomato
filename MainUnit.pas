@@ -4,14 +4,16 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, StdCtrls;
+  Dialogs, StdCtrls, RzTabs, ExtCtrls, RzButton, ImgList, uModel;
 
 type
   TForm1 = class(TForm)
-    Button1: TButton;
-    procedure Button1Click(Sender: TObject);
+    RzTabControl1: TRzTabControl;
+    Image1: TImage;
+    ImageList1: TImageList;
+    RzToolButton1: TRzToolButton;
   private
-    { Private declarations }
+    FTaskControl: TTaskControler;
   public
     { Public declarations }
   end;
@@ -22,14 +24,5 @@ var
 implementation
 
 {$R *.dfm}
-
-procedure TForm1.Button1Click(Sender: TObject);
-var
-  cls: TComponent;
-begin
-  cls := TComponent.Create(self);
-
-
-end;
 
 end.

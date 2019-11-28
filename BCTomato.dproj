@@ -20,6 +20,7 @@
 			<Base>true</Base>
 		</PropertyGroup>
 		<PropertyGroup Condition="'$(Base)'!=''">
+			<DCC_DcuOutput>.\dcu</DCC_DcuOutput>
 			<DCC_UnitSearchPath>.\lib;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
 			<UsePackages>true</UsePackages>
 			<DCC_UnitAlias>WinTypes=Windows;WinProcs=Windows;DbiTypes=BDE;DbiProcs=BDE;DbiErrs=BDE;$(DCC_UnitAlias)</DCC_UnitAlias>
@@ -47,6 +48,12 @@
 			</DCCReference>
 			<DCCReference Include="Model\uModel.pas"/>
 			<DCCReference Include="Model\uConfig.pas"/>
+			<DCCReference Include="uAppEnv.pas"/>
+			<DCCReference Include="PMSService\uPMSService.pas"/>
+			<DCCReference Include="Base\uTaskBase.pas"/>
+			<DCCReference Include="TomatoTimer.pas">
+				<Form>Form2</Form>
+			</DCCReference>
 			<BuildConfiguration Include="Base">
 				<Key>Base</Key>
 			</BuildConfiguration>
