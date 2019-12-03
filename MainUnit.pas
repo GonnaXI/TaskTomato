@@ -10,10 +10,10 @@ uses
 type
   TForm1 = class(TForm)
     tbTask: TRzTabControl;
-    Image1: TImage;
     ImageList1: TImageList;
     btnSetting: TRzToolButton;
     btnUser: TRzToolButton;
+    btnStart: TRzToolButton;
     procedure btnUserClick(Sender: TObject);
   private
     FTaskControl: TTaskControler;
