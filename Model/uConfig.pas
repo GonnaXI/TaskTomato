@@ -29,10 +29,15 @@ type
   TAppConfig = class(TXmlConfig)
   private
     FLoginConfig: TLoginConfig;
+    FWorkTIme: Integer;
+    FRestTime: Integer;
   protected
     procedure Initialize; override;
   public
     property LoginConfig: TLoginConfig read FLoginConfig write FLoginConfig;
+  published
+    property WorkTime: Integer read FWorkTime write FWorkTime;   //seconds
+    property RestTime: Integer read FRestTime write FRestTime;
   end;
 
 var
@@ -46,6 +51,8 @@ procedure TAppConfig.Initialize;
 begin
   inherited;
   AddSubConfig('Login', TLoginConfig, FLoginConfig);
+  FWorkTIme := 2;
+  FRestTime := 1;
 
 end;
 

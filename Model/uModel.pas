@@ -62,7 +62,7 @@ end;
 procedure TTaskControler.UpdateAllTasks;
 begin
   FTaskListAll.Clear;
-  FPMSService.GetTaskList(FTaskListAll);
+  FPMSService.GetTaskListAll(FTaskListAll);
 end;
 
 { TLoginManager }

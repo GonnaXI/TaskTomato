@@ -9,7 +9,9 @@ uses
   uPMSService in 'PMSService\uPMSService.pas',
   uTaskBase in 'Base\uTaskBase.pas',
   TomatoTimer in 'TomatoTimer.pas' {Form2},
-  LogingDialog in 'LogingDialog.pas' {dlgLogin};
+  LogingDialog in 'LogingDialog.pas' {dlgLogin},
+  Timer in 'Timer.pas' {frmTimer},
+  ConfigureDialog in 'ConfigureDialog.pas' {Config};
 
 {$R *.res}
 
@@ -18,6 +20,7 @@ begin
   Application.MainFormOnTaskbar := True;
   InitiApp;
   Application.CreateForm(TForm1, Form1);
+  Application.CreateForm(TConfig, Config);
   Application.Run;
   FinitApp;
 end.

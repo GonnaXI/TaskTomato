@@ -1,0 +1,106 @@
+object frmTimer: TfrmTimer
+  Left = 1617
+  Top = 0
+  BorderStyle = bsNone
+  Caption = #30058#33540#35745#26102#22120
+  ClientHeight = 221
+  ClientWidth = 309
+  Color = clCream
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -35
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  Position = poDesigned
+  OnCreate = FormCreate
+  OnMouseDown = FormMouseDown
+  PixelsPerInch = 96
+  TextHeight = 42
+  object Label1: TLabel
+    Left = 30
+    Top = 24
+    Width = 126
+    Height = 35
+    Caption = '00 : 00'
+    Color = clBlack
+    Font.Charset = GB2312_CHARSET
+    Font.Color = clLime
+    Font.Height = -35
+    Font.Name = #24188#22278
+    Font.Style = []
+    ParentColor = False
+    ParentFont = False
+  end
+  object Button1: TButton
+    Left = 30
+    Top = 80
+    Width = 75
+    Height = 25
+    Caption = #35745#26102#24320#22987
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clBlack
+    Font.Height = -14
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    ParentFont = False
+    TabOrder = 0
+    OnClick = Button1Click
+  end
+  object Button2: TButton
+    Left = 30
+    Top = 111
+    Width = 75
+    Height = 25
+    Caption = #26242#20572'/'#32487#32493
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clBlack
+    Font.Height = -14
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    ParentFont = False
+    TabOrder = 1
+    OnClick = Button2Click
+  end
+  object btnClsoe: TButton
+    Left = 30
+    Top = 142
+    Width = 75
+    Height = 25
+    Caption = #36864#20986
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clBlack
+    Font.Height = -14
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    ParentFont = False
+    TabOrder = 2
+    OnClick = btnClsoeClick
+  end
+  object Button3: TButton
+    Left = 152
+    Top = 120
+    Width = 75
+    Height = 25
+    Caption = #24377#20986#26032#26694
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clBlack
+    Font.Height = -14
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    ParentFont = False
+    TabOrder = 3
+  end
+  object tmr_work: TTimer
+    Enabled = False
+    OnTimer = tmr_workTimer
+    Left = 168
+    Top = 24
+  end
+  object tmr_rest: TTimer
+    Enabled = False
+    OnTimer = tmr_restTimer
+    Left = 224
+    Top = 24
+  end
+end

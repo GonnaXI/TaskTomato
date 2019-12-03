@@ -15,6 +15,8 @@ type
     btnUser: TRzToolButton;
     btnStart: TRzToolButton;
     procedure btnUserClick(Sender: TObject);
+    procedure btnStartClick(Sender: TObject);
+    procedure btnSettingClick(Sender: TObject);
   private
     FTaskControl: TTaskControler;
   public
@@ -27,9 +29,21 @@ var
 implementation
 
 uses
-  fsApplc, uConfig;
+  fsApplc, uConfig, timer, ConfigureDialog;
 
 {$R *.dfm}
+
+procedure TForm1.btnSettingClick(Sender: TObject);
+begin
+  Appsys.CallProc('Configure');
+end;
+
+procedure TForm1.btnStartClick(Sender: TObject);
+begin
+  if frmTimer = nil then
+    frmTimer := TfrmTimer.Create(nil);
+  frmTimer.show;
+end;
 
 procedure TForm1.btnUserClick(Sender: TObject);
 begin

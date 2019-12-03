@@ -11,7 +11,7 @@ type
   TTimeInfo = record
     Estimated: Double;    //计划时长
     Comsumed: Double;     //已消耗
-    REmained: Double;     //剩余时长
+    Remained: Double;     //剩余时长
   end;
 
   TTask = class
