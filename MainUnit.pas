@@ -4,14 +4,17 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, StdCtrls, RzTabs, ExtCtrls, RzButton, ImgList, uModel;
+  Dialogs, StdCtrls, RzTabs, ExtCtrls, RzButton, ImgList, uModel,
+  dxGDIPlusClasses;
 
 type
   TForm1 = class(TForm)
-    RzTabControl1: TRzTabControl;
+    tbTask: TRzTabControl;
     Image1: TImage;
     ImageList1: TImageList;
-    RzToolButton1: TRzToolButton;
+    btnSetting: TRzToolButton;
+    btnUser: TRzToolButton;
+    procedure btnUserClick(Sender: TObject);
   private
     FTaskControl: TTaskControler;
   public
@@ -23,6 +26,14 @@ var
 
 implementation
 
+uses
+  fsApplc, uConfig;
+
 {$R *.dfm}
+
+procedure TForm1.btnUserClick(Sender: TObject);
+begin
+  Appsys.CallProc('Login');
+end;
 
 end.

@@ -28,6 +28,7 @@ end;
 
 procedure FinitApp;
 begin
+  AppConfig.SaveConfig;
   FreeAndNil(AppConfig);
 end;
 

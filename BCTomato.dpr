@@ -8,7 +8,8 @@ uses
   uAppEnv in 'uAppEnv.pas',
   uPMSService in 'PMSService\uPMSService.pas',
   uTaskBase in 'Base\uTaskBase.pas',
-  TomatoTimer in 'TomatoTimer.pas' {Form2};
+  TomatoTimer in 'TomatoTimer.pas' {Form2},
+  LogingDialog in 'LogingDialog.pas' {dlgLogin};
 
 {$R *.res}
 
@@ -17,6 +18,6 @@ begin
   Application.MainFormOnTaskbar := True;
   InitiApp;
   Application.CreateForm(TForm1, Form1);
-  Application.CreateForm(TForm2, Form2);
   Application.Run;
+  FinitApp;
 end.

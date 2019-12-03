@@ -54,6 +54,9 @@
 			<DCCReference Include="TomatoTimer.pas">
 				<Form>Form2</Form>
 			</DCCReference>
+			<DCCReference Include="LogingDialog.pas">
+				<Form>dlgLogin</Form>
+			</DCCReference>
 			<BuildConfiguration Include="Base">
 				<Key>Base</Key>
 			</BuildConfiguration>
