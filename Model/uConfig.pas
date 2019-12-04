@@ -3,7 +3,7 @@ unit uConfig;
 interface
 
 uses
-  fsConfig, NativeXml;
+  fsConfig, NativeXml, EncdDecd, SysUtils;
 
 type
   TLoginConfig = class(TXmlSubConfig)
@@ -53,19 +53,25 @@ begin
   AddSubConfig('Login', TLoginConfig, FLoginConfig);
   FWorkTIme := 2;
   FRestTime := 1;
+  LoginConfig.FUserName := 'Worry';
+  LoginConfig.FPassWord := '123456';
+  LoginConfig.FSavePassword := True;
+
 
 end;
 
 { TLoginConfig }
 
+//¶ÔÃÜÂë×Ö·û´®½âÃÜ
 function TLoginConfig.Decode(Src: string): string;
 begin
-
+  Result := StringOf(DecodeBase64(Src));
 end;
 
+//¶ÔÃÜÂë×Ö·û´®¼ÓÃÜ
 function TLoginConfig.Encript(Src: string): string;
 begin
-
+  Result := EncodeBase64(BytesOf(Src), Length(BytesOf(Src)));
 end;
 
 procedure TLoginConfig.LoadFromXmlNode(ANode: TXmlNode);

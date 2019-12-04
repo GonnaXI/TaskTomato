@@ -54,6 +54,7 @@ object dlgLogin: TdlgLogin
     Height = 21
     TabOrder = 2
     TextHint = #35831#36755#20837#29992#25143#21517
+    OnKeyPress = edtUserNameKeyPress
   end
   object edtPassword: TEdit
     Left = 118
@@ -63,7 +64,6 @@ object dlgLogin: TdlgLogin
     PasswordChar = '#'
     TabOrder = 3
     TextHint = #35831#36755#20837#23494#30721
-    OnKeyDown = edtPasswordKeyDown
   end
   object btnLogin: TButton
     Left = 40

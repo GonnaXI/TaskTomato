@@ -1,6 +1,7 @@
 object Config: TConfig
   Left = 0
   Top = 0
+  BorderIcons = [biSystemMenu]
   Caption = #35774#32622
   ClientHeight = 160
   ClientWidth = 245
@@ -12,6 +13,8 @@ object Config: TConfig
   Font.Style = []
   OldCreateOrder = False
   Position = poMainFormCenter
+  OnClose = FormClose
+  OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
   object lblWorkTime: TLabel
@@ -59,5 +62,6 @@ object Config: TConfig
     Height = 25
     Caption = #21462#28040
     TabOrder = 3
+    OnClick = btnCancelClick
   end
 end

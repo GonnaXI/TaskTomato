@@ -1,9 +1,10 @@
 object Form1: TForm1
   Left = 0
   Top = 0
+  BorderStyle = bsSingle
   Caption = 'Form1'
-  ClientHeight = 413
-  ClientWidth = 635
+  ClientHeight = 423
+  ClientWidth = 645
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -11,6 +12,7 @@ object Form1: TForm1
   Font.Name = 'Tahoma'
   Font.Style = []
   OldCreateOrder = False
+  OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
   object btnSetting: TRzToolButton
@@ -45,8 +47,8 @@ object Form1: TForm1
     OnClick = btnUserClick
   end
   object btnStart: TRzToolButton
-    Left = 8
-    Top = 8
+    Left = 24
+    Top = 10
     Width = 32
     Height = 32
     GradientColorStyle = gcsSystem
@@ -57,21 +59,66 @@ object Form1: TForm1
     VisualStyle = vsGradient
     OnClick = btnStartClick
   end
-  object tbTask: TRzTabControl
-    Left = 8
-    Top = 80
-    Width = 619
-    Height = 321
-    TabIndex = 0
+  object pgcTask: TPageControl
+    Left = 32
+    Top = 88
+    Width = 585
+    Height = 305
+    ActivePage = tsTodayTask
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -15
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    ParentFont = False
     TabOrder = 0
-    Tabs = <
-      item
-        Caption = #20170#26085#35745#21010
+    object tsTodayTask: TTabSheet
+      Caption = #20170#26085#35745#21010
+      ExplicitLeft = -12
+      ExplicitTop = 48
+      ExplicitHeight = 385
+      object strngrdTodayTask: TStringGrid
+        Left = 0
+        Top = 0
+        Width = 577
+        Height = 272
+        Align = alClient
+        ColCount = 6
+        DefaultColWidth = 91
+        DefaultRowHeight = 28
+        FixedCols = 0
+        RowCount = 11
+        FixedRows = 0
+        ScrollBars = ssVertical
+        TabOrder = 0
+        OnDrawCell = strngrdTodayTaskDrawCell
+        ExplicitLeft = 3
       end
-      item
-        Caption = #25152#26377#25351#27966
-      end>
-    FixedDimension = 19
+    end
+    object tsAllTask: TTabSheet
+      Caption = #25152#26377#25351#27966
+      ImageIndex = 1
+      ExplicitLeft = 0
+      ExplicitTop = 32
+      ExplicitHeight = 277
+      object strngrdAllTask: TStringGrid
+        Left = 0
+        Top = 0
+        Width = 577
+        Height = 272
+        Align = alClient
+        ColCount = 7
+        DefaultColWidth = 80
+        DefaultRowHeight = 28
+        FixedCols = 0
+        RowCount = 10
+        FixedRows = 0
+        ScrollBars = ssVertical
+        TabOrder = 0
+        OnClick = strngrdAllTaskClick
+        OnDrawCell = strngrdAllTaskDrawCell
+      end
+    end
   end
   object ImageList1: TImageList
     Height = 32

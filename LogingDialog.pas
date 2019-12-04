@@ -15,10 +15,9 @@ type
     edtUserName: TEdit;
     edtPassword: TEdit;
     btnLogin: TButton;
-    procedure edtPasswordKeyDown(Sender: TObject; var Key: Word;
-      Shift: TShiftState);
     procedure FormCreate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure edtUserNameKeyPress(Sender: TObject; var Key: Char);
   private
     procedure LoadConfig;
     procedure SaveConfig;
@@ -38,10 +37,14 @@ uses
 
 { TdlgLogin }
 
-procedure TdlgLogin.edtPasswordKeyDown(Sender: TObject; var Key: Word;
-  Shift: TShiftState);
+procedure TdlgLogin.edtUserNameKeyPress(Sender: TObject; var Key: Char);
 begin
-{ TODO : 限制只能输入字母和数字 }
+  if not(key in [#8, '0'..'9', 'a'..'z' ]) then
+  begin
+    Key := #0;
+    //ShowMessage('只能输入字母和数字的组合');
+    MessageBox(0, '请输入字母和数字的组合', '提示', MB_OK);
+  end;
 end;
 
 procedure TdlgLogin.FormClose(Sender: TObject; var Action: TCloseAction);
