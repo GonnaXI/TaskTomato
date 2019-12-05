@@ -27,16 +27,16 @@ type
       Rect: TRect; State: TGridDrawState);
     procedure strngrdTodayTaskDrawCell(Sender: TObject; ACol, ARow: Integer;
       Rect: TRect; State: TGridDrawState);
-
   private
     FTaskControl: TTaskControler;
+    FCheckImg: TBitmap;
+    FNoCheckImg: TBitmap;
   public
     { Public declarations }
   end;
 
 var
   Form1: TForm1;
-  FCheck,FNoCheck: tbitmap;
 
 implementation
 
@@ -54,7 +54,7 @@ procedure TForm1.btnStartClick(Sender: TObject);
 begin
   if frmTimer = nil then
     frmTimer := TfrmTimer.Create(nil);
-  frmTimer.show;
+  frmTimer.Show;
 end;
 
 procedure TForm1.btnUserClick(Sender: TObject);
@@ -63,56 +63,63 @@ begin
 end;
 
 procedure TForm1.FormCreate(Sender: TObject);
+const
+  SID = 'ID';
+  SCaption = '标题';
+  SState = '状态';
+  SEstimated = '计划';
+  SComsumed = '已消耗';
+  SRemained = '剩余';
+  SCheckState = '是否选中';
 var
   bmp: TBitmap;
 begin
-  strngrdTodayTask.Cells[0, 0] := 'ID';
-  strngrdTodayTask.Cells[1, 0] := '标题';
-  strngrdTodayTask.Cells[2, 0] := '状态';
-  strngrdTodayTask.Cells[3, 0] := '计划';
-  strngrdTodayTask.Cells[4, 0] := '已消耗';
-  strngrdTodayTask.Cells[5, 0] := '剩余';
+  strngrdTodayTask.Cells[0, 0] := SID;
+  strngrdTodayTask.Cells[1, 0] := SCaption;
+  strngrdTodayTask.Cells[2, 0] := SState;
+  strngrdTodayTask.Cells[3, 0] := SEstimated;
+  strngrdTodayTask.Cells[4, 0] := SComsumed;
+  strngrdTodayTask.Cells[5, 0] := SRemained;
 
-  strngrdAllTask.Cells[0,0] := '是否选中';
-  strngrdAllTask.Cells[1,0] := 'ID';
-  strngrdAllTask.Cells[2,0] := '标题';
-  strngrdAllTask.Cells[3,0] := '状态';
-  strngrdAllTask.Cells[4,0] := '计划';
-  strngrdAllTask.Cells[5,0] := '已消耗';
-  strngrdAllTask.Cells[6,0] := '剩余';
+  strngrdAllTask.Cells[0,0] := SCheckState;
+  strngrdAllTask.Cells[1,0] := SID;
+  strngrdAllTask.Cells[2,0] := SCaption;
+  strngrdAllTask.Cells[3,0] := SState;
+  strngrdAllTask.Cells[4,0] := SEstimated;
+  strngrdAllTask.Cells[5,0] := SComsumed;
+  strngrdAllTask.Cells[6,0] := SRemained;
 
-  FCheck:= TBitmap.Create;
-  FNoCheck:= TBitmap.Create;
+  FCheckImg:= TBitmap.Create;
+  FNoCheckImg:= TBitmap.Create;
   bmp:= TBitmap.Create;
   try
     bmp.handle := LoadBitmap(0, PChar(OBM_CHECKBOXES));
-    With FNoCheck do
+    With FNoCheckImg do
     Begin
       Width := bmp.Width div 4;
       Height := bmp.Height div 3;
-      Canvas.CopyRect(Canvas.Cliprect, bmp.Canvas, Canvas.Cliprect);
+      Canvas.CopyRect(Canvas.ClipRect, bmp.Canvas, Canvas.ClipRect);
     End;
-    With FCheck do
+    With FCheckImg do
     Begin
       Width := bmp.Width div 4;
       Height := bmp.Height div 3;
-      Canvas.copyrect(Canvas.Cliprect, bmp.Canvas, Rect(Width, 0, 2*Width, Height));
+      Canvas.CopyRect(Canvas.ClipRect, bmp.Canvas, Rect(Width, 0, 2 * Width, Height));
     End;
   finally
     bmp.free
   end;
-
 end;
 
 
 procedure TForm1.strngrdAllTaskClick(Sender: TObject);
 begin
-  if (strngrdAllTask.Col = 0) and(strngrdAllTask.Row <> 0) then
+  if (strngrdAllTask.Col = 0) and (strngrdAllTask.Row <> 0) then
   begin
-    if strngrdAllTask.Cells[strngrdAllTask.Col, strngrdAllTask.Row] = 'yes' then
-       strngrdAllTask.Cells[strngrdAllTask.Col, strngrdAllTask.Row] := 'no'
+    if strngrdAllTask.Cells[0, strngrdAllTask.Row] = 'yes' then
+       strngrdAllTask.Cells[0, strngrdAllTask.Row] := 'no'
     else
-      strngrdAllTask.Cells[strngrdAllTask.Col, strngrdAllTask.Row] := 'yes';
+      strngrdAllTask.Cells[0, strngrdAllTask.Row] := 'yes';
   end;
 
 end;
@@ -121,8 +128,9 @@ end;
 procedure TForm1.strngrdAllTaskDrawCell(Sender: TObject; ACol, ARow: Integer;
   Rect: TRect; State: TGridDrawState);
 var
-  str: String;
+  Str: String;
   R: TRect;
+  X, Y: Integer;
 begin
   if (ACol = 0) and (ARow <> 0) then
   begin
@@ -131,12 +139,12 @@ begin
       begin
         Brush.Color := clWindow;
         FillRect(Rect);
+        X := (Rect.Right + Rect.Left - FCheckImg.Width) div 2;
+        Y := (Rect.Bottom + Rect.Top - FCheckImg.Height) div 2;
         if strngrdAllTask.Cells[ACol, ARow] = 'yes' then
-          Draw((Rect.Right + Rect.Left - FCheck.Width) div 2,
-            (Rect.Bottom + Rect.Top - Fcheck.Height) div 2, FCheck)
+          Draw(X, Y, FCheckImg)
         else
-          Draw((Rect.Right + Rect.Left - FCheck.Width) div 2,
-            (Rect.Bottom + Rect.Top - Fcheck.Height) div 2, FNoCheck);
+          Draw(X, Y, FNoCheckImg);
       end;
   end;
 
@@ -159,7 +167,7 @@ end;
 procedure TForm1.strngrdTodayTaskDrawCell(Sender: TObject; ACol, ARow: Integer;
   Rect: TRect; State: TGridDrawState);
 var
-  str: String;
+  Str: String;
   R: TRect;
 begin
   if (ARow = 0) and (ACol <> 0) then
