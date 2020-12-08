@@ -64,7 +64,7 @@ object Form1: TForm1
     Top = 88
     Width = 585
     Height = 305
-    ActivePage = tsTodayTask
+    ActivePage = tsAllTask
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
     Font.Height = -15
@@ -74,9 +74,10 @@ object Form1: TForm1
     TabOrder = 0
     object tsTodayTask: TTabSheet
       Caption = #20170#26085#35745#21010
-      ExplicitLeft = -12
-      ExplicitTop = 48
-      ExplicitHeight = 385
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object strngrdTodayTask: TStringGrid
         Left = 0
         Top = 0
@@ -92,15 +93,15 @@ object Form1: TForm1
         ScrollBars = ssVertical
         TabOrder = 0
         OnDrawCell = strngrdTodayTaskDrawCell
-        ExplicitLeft = 3
       end
     end
     object tsAllTask: TTabSheet
       Caption = #25152#26377#25351#27966
       ImageIndex = 1
       ExplicitLeft = 0
-      ExplicitTop = 32
-      ExplicitHeight = 277
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object strngrdAllTask: TStringGrid
         Left = 0
         Top = 0
@@ -126,7 +127,7 @@ object Form1: TForm1
     Left = 96
     Top = 8
     Bitmap = {
-      494C010104000900040020002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C0101040009000C0020002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000800000004000000001002000000000000080
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
